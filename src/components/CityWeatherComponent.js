@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Color from '../utility/Color';
 
 const CityWeatherComponent = ({
@@ -23,7 +24,11 @@ const CityWeatherComponent = ({
   } = styles;
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={[containerCity, {backgroundColor: startColor}]}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={[startColor, endColor]}
+        style={containerCity}>
         <View style={rowItems}>
           <View style={cityAndData}>
             <Text style={titleStyle}>{title}</Text>
@@ -33,7 +38,7 @@ const CityWeatherComponent = ({
           <Image source={imageSource} />
           <Text style={degreeStyle}>{degree}</Text>
         </View>
-      </View>
+      </LinearGradient>
     </TouchableOpacity>
   );
 };

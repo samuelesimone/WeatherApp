@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Text, View, StyleSheet, Image, ScrollView} from 'react-native';
 import CityWeatherComponent from '../components/CityWeatherComponent';
 import Color from '../utility/Color';
@@ -7,6 +7,29 @@ const HomeScreen = ({navigation}) => {
   const {containerHome, rowAddCity, titleStyle, addCityStyle, cityContainer} =
     styles;
   const sunnyImage = require('../assets/images/Sunny.png');
+  const [weatherMilan, setWeatherMilan] = useState({});
+  const [weatherTurin, setWeatherTurin] = useState({});
+  const [weatherRome, setWeatherRome] = useState({});
+  const API_KEY = '2ccd4e42f6dd936ca8b9e7a8a8752aad';
+  const URL_Milan = `https://api.openweathermap.org/data/2.5/weather?q=Milan,IT&appid=${API_KEY}&units=metric`;
+  const URL_Turin = `https://api.openweathermap.org/data/2.5/weather?q=Turin,IT&appid=${API_KEY}`;
+  const URL_Rome = `https://api.openweathermap.org/data/2.5/weather?q=Rome,IT&appid=${API_KEY}`;
+
+  async function getWeather() {
+    const dataMilan = await fetch(URL_Milan).then(res => res.json());
+    setWeatherMilan([dataMilan]);
+    const dataTurin = await fetch(URL_Turin).then(res => res.json());
+    setWeatherTurin([dataTurin]);
+    const dataRome = await fetch(URL_Rome).then(res => res.json());
+    setWeatherRome([dataRome]);
+  }
+
+  useEffect(() => {
+    //getWeather();
+  }, []);
+
+  const customDataMilan = require('../mocks/MilanMock.json');
+
   return (
     <ScrollView>
       <View style={containerHome}>
@@ -21,7 +44,46 @@ const HomeScreen = ({navigation}) => {
         </View>
         <View style={cityContainer}>
           <CityWeatherComponent
-            startColor={Color.blueGradientEnd}
+            startColor={Color.blueGradientStart}
+            endColor={Color.blueGradientEnd}
+            imageSource={sunnyImage}
+            title={customDataMilan.name}
+            date={'Friday 18,\nseptember'}
+            hour={'2:38pm'}
+            degree={customDataMilan.main.temp + '°'}
+            onPress={() => {
+              navigation.navigate('WeatherDetail', {
+                title: customDataMilan.name,
+                date: 'Friday 18, september',
+                temp: customDataMilan.main.temp + '°',
+                startColor: Color.blueGradientStart,
+                endColor: Color.blueGradientEnd,
+              });
+            }}
+          />
+          <View marginTop={20} />
+          <CityWeatherComponent
+            startColor={Color.cianoGradientStart}
+            endColor={Color.cianoGradientEnd}
+            imageSource={sunnyImage}
+            title={'London'}
+            date={'Friday 18,\nseptember'}
+            hour={'2:38pm'}
+            degree={'18°'}
+            onPress={() => {
+              navigation.navigate('WeatherDetail', {
+                title: 'London',
+                date: 'Friday 18,september',
+                temp: customDataMilan.main.temp + '°',
+                startColor: Color.cianoGradientStart,
+                endColor: Color.cianoGradientEnd,
+              });
+            }}
+          />
+          <View marginTop={20} />
+          <CityWeatherComponent
+            startColor={Color.greyGradientStart}
+            endColor={Color.greyGradientEnd}
             imageSource={sunnyImage}
             title={'London'}
             date={'Friday 18,\nseptember'}
@@ -31,34 +93,10 @@ const HomeScreen = ({navigation}) => {
               navigation.navigate('WeatherDetail', {
                 title: 'London',
                 date: 'Friday 18, september',
+                temp: customDataMilan.main.temp + '°',
+                startColor: Color.greyGradientStart,
+                endColor: Color.greyGradientEnd,
               });
-            }}
-          />
-          <View marginTop={20} />
-          <CityWeatherComponent
-            startColor={Color.cianoGradientEnd}
-            imageSource={sunnyImage}
-            title={'London'}
-            date={'Friday 18,\nseptember'}
-            hour={'2:38pm'}
-            degree={'18°'}
-            onPress={() => {
-              navigation.navigate('WeatherDetail', {
-                title: 'London',
-                date: 'Friday 18, september',
-              });
-            }}
-          />
-          <View marginTop={20} />
-          <CityWeatherComponent
-            startColor={Color.greyGradientEnd}
-            imageSource={sunnyImage}
-            title={'London'}
-            date={'Friday 18, september'}
-            hour={'2:38pm'}
-            degree={'18°'}
-            onPress={() => {
-              navigation.navigate('WeatherDetail');
             }}
           />
         </View>

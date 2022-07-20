@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Color from '../utility/Color';
 
 const WeatherDetailScreen = ({navigation, route}) => {
@@ -21,13 +22,13 @@ const WeatherDetailScreen = ({navigation, route}) => {
     typeWeatherText,
   } = styles;
 
-  const {title, date} = route.params;
+  const {title, date, temp, startColor, endColor} = route.params;
 
   const goBack = () => {
     navigation.pop();
   };
   return (
-    <View style={containerDetail}>
+    <LinearGradient colors={[startColor, endColor]} style={containerDetail}>
       <View style={rowTitle}>
         <TouchableOpacity onPress={goBack}>
           <Image source={require('../assets/images/Arrow.png')} />
@@ -55,7 +56,9 @@ const WeatherDetailScreen = ({navigation, route}) => {
       <Text style={typeWeatherText}>Sunny</Text>
       <View style={weatherRow}>
         <Image source={require('../assets/images/Sunny.png')} />
-        <Text style={{fontSize: 110, marginLeft: 42}}>22°</Text>
+        <Text style={{fontSize: 110, marginLeft: 42, color: Color.white}}>
+          {temp}
+        </Text>
       </View>
       <View style={arrowTemperatureStyle}>
         <View />
@@ -79,7 +82,7 @@ const WeatherDetailScreen = ({navigation, route}) => {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({

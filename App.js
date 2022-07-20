@@ -112,7 +112,9 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-      screenOptions={{headerShown: false}}
+      screenOptions={{
+        headerShown: false,
+      }}
       tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen
         name="HomeStack"
