@@ -28,7 +28,10 @@ const HomeScreen = ({navigation}) => {
             hour={'2:38pm'}
             degree={'18°'}
             onPress={() => {
-              navigation.navigate('WeatherDetail');
+              navigation.navigate('WeatherDetail', {
+                title: 'London',
+                date: 'Friday 18, september',
+              });
             }}
           />
           <View marginTop={20} />
@@ -40,7 +43,10 @@ const HomeScreen = ({navigation}) => {
             hour={'2:38pm'}
             degree={'18°'}
             onPress={() => {
-              navigation.navigate('WeatherDetail');
+              navigation.navigate('WeatherDetail', {
+                title: 'London',
+                date: 'Friday 18, september',
+              });
             }}
           />
           <View marginTop={20} />
@@ -48,7 +54,7 @@ const HomeScreen = ({navigation}) => {
             startColor={Color.greyGradientEnd}
             imageSource={sunnyImage}
             title={'London'}
-            date={'Friday 18,\nseptember'}
+            date={'Friday 18, september'}
             hour={'2:38pm'}
             degree={'18°'}
             onPress={() => {
