@@ -8,6 +8,8 @@ import MapScreen from './src/screens/MapScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Color from './src/utility/Color';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import WeatherDetailScreen from './src/screens/WeatherDetailScreen';
 
 function MyTabBar({state, descriptors, navigation}) {
   return (
@@ -92,6 +94,19 @@ function MyTabBar({state, descriptors, navigation}) {
     </View>
   );
 }
+
+const Stack = createNativeStackNavigator();
+const HomeStack = () => {
+  return (
+    <Stack.Navigator
+      initialRoutName="Home"
+      screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="WeatherDetail" component={WeatherDetailScreen} />
+    </Stack.Navigator>
+  );
+};
+
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -100,8 +115,8 @@ function MyTabs() {
       screenOptions={{headerShown: false}}
       tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="HomeStack"
+        component={HomeStack}
         options={{
           tabBarIcon: isFocused => (
             <Image source={require('./src/assets/images/Home.png')} />

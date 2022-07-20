@@ -10,6 +10,7 @@ const CityWeatherComponent = ({
   date,
   hour,
   imageSource,
+  onPress,
 }) => {
   const {
     containerCity,
@@ -21,7 +22,7 @@ const CityWeatherComponent = ({
     degreeStyle,
   } = styles;
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={[containerCity, {backgroundColor: startColor}]}>
         <View style={rowItems}>
           <View style={cityAndData}>

@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, Image, ScrollView} from 'react-native';
 import CityWeatherComponent from '../components/CityWeatherComponent';
 import Color from '../utility/Color';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const {containerHome, rowAddCity, titleStyle, addCityStyle, cityContainer} =
     styles;
   const sunnyImage = require('../assets/images/Sunny.png');
@@ -21,12 +21,15 @@ const HomeScreen = () => {
         </View>
         <View style={cityContainer}>
           <CityWeatherComponent
-            startColor={Color.cianoGradientEnd}
+            startColor={Color.blueGradientEnd}
             imageSource={sunnyImage}
             title={'London'}
             date={'Friday 18,\nseptember'}
             hour={'2:38pm'}
             degree={'18°'}
+            onPress={() => {
+              navigation.navigate('WeatherDetail');
+            }}
           />
           <View marginTop={20} />
           <CityWeatherComponent
@@ -36,15 +39,21 @@ const HomeScreen = () => {
             date={'Friday 18,\nseptember'}
             hour={'2:38pm'}
             degree={'18°'}
+            onPress={() => {
+              navigation.navigate('WeatherDetail');
+            }}
           />
           <View marginTop={20} />
           <CityWeatherComponent
-            startColor={Color.cianoGradientEnd}
+            startColor={Color.greyGradientEnd}
             imageSource={sunnyImage}
             title={'London'}
             date={'Friday 18,\nseptember'}
             hour={'2:38pm'}
             degree={'18°'}
+            onPress={() => {
+              navigation.navigate('WeatherDetail');
+            }}
           />
         </View>
       </View>
