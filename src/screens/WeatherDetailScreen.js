@@ -30,7 +30,8 @@ const WeatherDetailScreen = ({navigation, route}) => {
     noData,
   } = styles;
 
-  const {date, startColor, endColor, forecast, imageSource} = route.params;
+  const {date, startColor, endColor, forecast, imageSource, title} =
+    route.params;
   const [weekWeather, setWeekWeather] = useState();
   const goBack = () => {
     navigation.pop();
@@ -65,8 +66,10 @@ const WeatherDetailScreen = ({navigation, route}) => {
         <TouchableOpacity onPress={goBack}>
           <Image source={require('../assets/images/Arrow.png')} />
         </TouchableOpacity>
-        <Text style={cityStyle}>{forecast?.city?.name}</Text>
-        <Image source={require('../assets/images/Plus.png')} />
+        <Text style={cityStyle}>
+          {!isUndefined(title) ? title : forecast?.city?.name}
+        </Text>
+        <Image source={require('../assets/images/Pluswhite.png')} />
       </View>
       <View style={dateStyle}>
         <Text style={dateText}>{date}</Text>

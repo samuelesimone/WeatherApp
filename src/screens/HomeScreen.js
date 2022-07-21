@@ -120,6 +120,7 @@ const HomeScreen = ({navigation}) => {
                 date: moment().format('dddd Do MMMM'),
                 startColor: Color.cianoGradientStart,
                 endColor: Color.cianoGradientEnd,
+                title: weatherTurin[0]?.name.split(' ')[2],
                 imageSource: getImageWeather(forecastedTurin),
               });
             }}

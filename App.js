@@ -13,7 +13,10 @@ import WeatherDetailScreen from './src/screens/WeatherDetailScreen';
 
 function MyTabBar({state, descriptors, navigation}) {
   return (
-    <View style={{flexDirection: 'row'}}>
+    <View
+      style={{
+        flexDirection: 'row',
+      }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =
@@ -64,8 +67,8 @@ function MyTabBar({state, descriptors, navigation}) {
         return (
           <View
             style={{
-              backgroundColor: Color.primaryBlack,
-              height: 45,
+              backgroundColor: Color.white,
+              height: 60,
               flex: 1,
               alignItems: 'center',
               justifyContent: 'center',
@@ -76,12 +79,7 @@ function MyTabBar({state, descriptors, navigation}) {
               accessibilityLabel={options.tabBarAccessibilityLabel}
               testID={options.tabBarTestID}
               onPress={onPress}
-              onLongPress={onLongPress}
-              style={{
-                flex: 1,
-                backgroundColor: Color.primaryBlack,
-                justifyContent: 'center',
-              }}>
+              onLongPress={onLongPress}>
               <Image
                 source={iconName()}
                 size={30}
@@ -114,6 +112,9 @@ function MyTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+      }}
+      tabBarOptions={{
+        style: {},
       }}
       tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen name="HomeStack" component={HomeStack} />
