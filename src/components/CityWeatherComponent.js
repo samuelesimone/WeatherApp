@@ -59,10 +59,15 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 26,
     color: Color.white,
+    fontFamily: 'poppins_semibold',
   },
-  dateStyle: {fontSize: 15, color: Color.white},
-  hourStyle: {marginTop: 14, color: Color.white},
-  degreeStyle: {fontSize: 50, color: Color.white},
+  dateStyle: {fontSize: 15, color: Color.white, fontFamily: 'poppins_medium'},
+  hourStyle: {marginTop: 3, color: Color.white, fontFamily: 'poppins_light'},
+  degreeStyle: {
+    fontSize: 50,
+    color: Color.white,
+    fontFamily: 'poppins_bold',
+  },
 });
 
 export default CityWeatherComponent;
