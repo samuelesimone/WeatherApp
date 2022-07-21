@@ -30,7 +30,7 @@ const WeatherDetailScreen = ({navigation, route}) => {
     noData,
   } = styles;
 
-  const {startColor, endColor, forecast} = route.params;
+  const {date, startColor, endColor, forecast, imageSource} = route.params;
   const [weekWeather, setWeekWeather] = useState();
   const goBack = () => {
     navigation.pop();
@@ -69,7 +69,7 @@ const WeatherDetailScreen = ({navigation, route}) => {
         <Image source={require('../assets/images/Plus.png')} />
       </View>
       <View style={dateStyle}>
-        <Text style={dateText}>{moment().format('dddd Do MMMM')}</Text>
+        <Text style={dateText}>{date}</Text>
       </View>
       <Text style={typeWeatherText}>
         {!isUndefined(forecast)
@@ -77,10 +77,10 @@ const WeatherDetailScreen = ({navigation, route}) => {
           : 'No Available'}
       </Text>
       <View style={weatherRow}>
-        <Image source={require('../assets/images/Sunny.png')} />
+        <Image source={imageSource} />
 
         <Text style={tempText}>
-          {parseInt(forecast?.list[0]?.main?.temp, 10)}
+          {parseInt(forecast?.list[0]?.main?.temp, 10) + '°'}
         </Text>
       </View>
       <View style={arrowTemperatureStyle}>

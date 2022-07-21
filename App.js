@@ -116,29 +116,9 @@ function MyTabs() {
         headerShown: false,
       }}
       tabBar={props => <MyTabBar {...props} />}>
-      <Tab.Screen
-        name="HomeStack"
-        component={HomeStack}
-        options={{
-          tabBarIcon: isFocused => (
-            <Image source={require('./src/assets/images/Home.png')} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Search"
-        component={SearchScreen}
-        options={{
-          tabBarIcon: () => <Icon name="calendar-o" size={30} color="#900" />,
-        }}
-      />
-      <Tab.Screen
-        name="Map"
-        component={MapScreen}
-        options={{
-          tabBarIcon: () => <Icon name="plus" size={30} color="#900" />,
-        }}
-      />
+      <Tab.Screen name="HomeStack" component={HomeStack} />
+      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Map" component={MapScreen} />
     </Tab.Navigator>
   );
 }

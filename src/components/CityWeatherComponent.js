@@ -61,7 +61,12 @@ const styles = StyleSheet.create({
     color: Color.white,
     fontFamily: 'poppins_semibold',
   },
-  dateStyle: {fontSize: 15, color: Color.white, fontFamily: 'poppins_medium'},
+  dateStyle: {
+    width: 130,
+    fontSize: 15,
+    color: Color.white,
+    fontFamily: 'poppins_medium',
+  },
   hourStyle: {marginTop: 3, color: Color.white, fontFamily: 'poppins_light'},
   degreeStyle: {
     fontSize: 50,
